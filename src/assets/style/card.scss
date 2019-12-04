@@ -1,0 +1,112 @@
+.card {
+    min-height: 100px;
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(31, 30, 47, 0.05);
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        padding: 0 25px;
+        border-bottom: 1px solid #ebedf2;
+        min-height: 50px;
+
+        span.card-title {
+            line-height: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #50649c;
+        }
+
+        .toolbar span {
+            display: inline-block;
+            margin-left: 30px;
+            cursor: pointer;
+            line-height: 50px;
+            font-size: 13px;
+            color: #595d6e;
+        }
+
+        span.active {
+            color: #22b9ff;
+            border-bottom: 1px solid #22b9ff;
+        }
+    }
+}
+
+.card-table {
+    padding: 20px;
+}
+
+.analysis-card {
+    text-align: left;
+    padding: 20px;
+
+    .info,
+    .progess {
+        margin-bottom: 20px;
+
+        h3 {
+            font-size: 15px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #50649c;
+        }
+
+        span {
+            font-size: 13px;
+            margin-right: 20px;
+        }
+    }
+
+    .info span {
+        color: #50649c;
+    }
+
+    .info b {
+        font-size: 18px;
+        font-weight: bold;
+    }
+}
+
+.card-profile {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px 10px;
+
+    .card-profile-info {
+        text-align: left;
+
+        p {
+            font-size: 12px;
+            color: #a4abc5;
+        }
+
+        h3 {
+            margin: 10px 0;
+            color: #50649c;
+            font-size: 22px;
+            font-weight: 600;
+        }
+    }
+
+    .card-profile-icon i {
+        font-size: 38px;
+        color: #9ba7ca;
+
+
+    }
+
+    .card-profile-info {
+        i.iconfont.iconxiajiang {
+            color: #f1646c !important;
+        }
+
+        i.iconfont.iconshangsheng {
+            color: #1ecab8 !important;
+        }
+    }
+}
