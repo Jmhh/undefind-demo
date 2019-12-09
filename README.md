@@ -36,6 +36,7 @@ src -- 源码目录
     ├── exam -- 考试模块页
     ├── class -- 班级模块页面
     └── login -- 登录模块页面
+```
 
 ### Build Setup
 
@@ -52,6 +53,8 @@ npm run dev
 # build for production with minification
 
 npm run build
+
+```
 
 ```
 
