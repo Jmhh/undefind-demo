@@ -81,7 +81,7 @@ export default {
         "/index": "1",
         "/analysis": "2",
         "/exam": "3",
-        "/team": "4"
+        "/class": "4"
       };
       return map[data];
     }

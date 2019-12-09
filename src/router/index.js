@@ -18,7 +18,7 @@ const routes = [{
         component: Layout,
         hidden: true,
         children: [{
-                path: 'index',
+                path: '/index',
                 name: 'index',
                 component: () => import('../views/Index/index.vue')
             },

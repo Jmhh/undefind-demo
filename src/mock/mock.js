@@ -93,4 +93,42 @@ Mock.mock('/login', /post|get/i, {
     'jwtToken': Random.id(),
 });
 
+//班级情况
+const students = () => {
+    let data = [];
+    for (let i = 0; i < 12; i++) {
+        let newObject = {
+            id: Random.id(),
+            studentRealname: Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
+            totalScore: Random.natural(40, 98),
+            sex: Random.natural(0, 1),
+            team: 1,
+            date: Random.datetime() // Random.date()指示生成的日期字符串的格式,默认为yyyy-MM-dd；Random.time() 返回一个随机的时间字符串
+        }
+        data.push(newObject)
+    }
+    return data
+}
+Mock.mock('/students', /post|get/i, students);
+
+//测试情况
+Mock.mock('/examList', /post|get/i, {
+    'data|6': [{
+        "name|+1": ['数学测试', '化学测试', '数学测试', '物理测试', '物理测试', '数学测试'],
+        'correctCount|50-90': 50,
+        'ranking|1-8': 4,
+        'avgScore|50-90': 50,
+    }]
+});
+
+// Mock.mock('/students', /post|get/i, {
+//     'data|12': [{
+//         "id": Random.id(),
+//         "studentRealname": Random.cname(),
+//         'totalScore|40-99': 70,
+//         'sex|0-1': 0,
+//         "team": 1,
+//     }]
+// });
+
 Mock.mock('/news', /post|get/i, produceData); //当post或get请求到/news路由时Mock会拦截请求并返回上面的数据
