@@ -10,7 +10,7 @@
           :collapse="isCollapse"
         >
           <el-menu-item
-            v-for="item in routes"
+            v-for="item in routeData"
             :key="item.name"
             :index="item.id"
             @click="handleGo(item.name)"
@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       active: "",
-      routes: [
+      routeData: [
         {
           name: "index",
           text: "首页",
@@ -46,7 +46,7 @@ export default {
         },
         { name: "exam", text: "测试", id: "3", icon: "iconfont iconceshi4" },
         {
-          name: "team",
+          name: "class",
           text: "班级",
           id: "4",
           icon: "iconfont iconbeikejiaoan"

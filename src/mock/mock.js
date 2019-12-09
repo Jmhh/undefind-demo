@@ -86,5 +86,11 @@ Mock.mock('/ratios', /post|get/i, {
     }]
 });
 
+//登录接口
+Mock.mock('/login', /post|get/i, {
+    'name': 'admin',
+    'password': 123456,
+    'jwtToken': Random.id(),
+});
 
 Mock.mock('/news', /post|get/i, produceData); //当post或get请求到/news路由时Mock会拦截请求并返回上面的数据

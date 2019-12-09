@@ -1,6 +1,6 @@
 <template>
   <div class="topbar">
-    <div :class="[isCollapse?'topbar-custom isCollapse':'topbar-custom '] ">
+    <div :class="[isCollapse ? 'topbar-custom isCollapse' : 'topbar-custom ']">
       <div class="topbar-left">
         <span class="collapse" @click="handleCollapse">
           <i class="iconfont icondaohang"></i>
@@ -12,11 +12,50 @@
             <i class="iconfont iconicon_notice"></i>
           </el-badge>
         </div>
-        <div class="uer">
-          <i class="iconfont iconyonghufangkeshu"></i>
-        </div>
         <div class="info">
           <i class="iconfont iconbangzhu"></i>
+        </div>
+        <div class="user">
+          <i class="iconfont iconyonghufangkeshu"></i>
+          <div>
+            <el-dropdown>
+              <span>{{userName?userName:'admin'}}</span>
+              <span>
+                <i class="iconfont iconxiajiantou"></i>
+              </span>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item>
+                  <i class="iconfont icongerenzhongxin"></i> 个人中心
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <i class="iconfont iconxinxizhongxin"></i> 我的信息
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <i class="iconfont iconsettings"></i> 个人设置
+                </el-dropdown-item>
+                <el-dropdown-item divided @click.native="handleLoginOut">
+                  <i class="iconfont icondengchu"></i>
+                  登出
+                </el-dropdown-item>
+              </el-dropdown-menu>
+              <!-- <div class="userLisst">
+              <ul>
+                <li>
+                  <i class="iconfont icongerenzhongxin"></i> 个人中心
+                </li>
+                <li>
+                  <i class="iconfont iconxinxizhongxin"></i> 我的信息
+                </li>
+                <li>
+                  <i class="iconfont iconsettings"></i> 个人设置
+                </li>
+                <li @click="handleLoginOut">
+                  <i class="iconfont icondengchu"></i> 登出
+                </li>
+              </ul>
+              </div>-->
+            </el-dropdown>
+          </div>
         </div>
       </div>
     </div>
@@ -36,6 +75,9 @@ export default {
   computed: {
     isCollapse() {
       return this.$store.getters.isCollapse;
+    },
+    userName() {
+      return this.$store.getters.userName;
     }
   },
 
@@ -44,11 +86,18 @@ export default {
   methods: {
     handleCollapse() {
       this.$store.dispatch("toggleSideBar");
+    },
+    handleLoginOut() {
+      this.$store.dispatch("setUserName");
+      this.$store.commit("SET_USERTOKEN");
+      this.$router.replace({
+        path: "/login"
+      });
     }
   }
 };
 </script>
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .topbar {
   left: 0;
   position: fixed;
@@ -88,11 +137,54 @@ export default {
       color: #b8bac3;
       font-size: 16px;
     }
-    .uer i {
+    .user i.iconfont.iconyonghufangkeshu {
       color: #22b9ff;
+    }
+    .user i.iconfont.iconxiajiantou {
+      margin-top: 2px;
+      font-size: 12px;
+      margin-left: 3px;
+      color: #999;
     }
     .info i {
       color: #fbce44;
+    }
+    .user {
+      display: flex;
+      position: relative;
+      span {
+        margin-left: 5px;
+        cursor: pointer;
+        color: #b8bac3;
+        font-size: 14px;
+      }
+      .userLisst {
+        width: 120px;
+        position: absolute;
+        right: -10px;
+        top: 55px;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        li {
+          padding: 3px 5px;
+          line-height: 35px;
+          font-weight: 400;
+          color: #a4abc5;
+          cursor: pointer;
+          &:hover {
+            font-weight: 600;
+          }
+          &:nth-child(4) {
+            border-top: 1px solid rgba(0, 0, 0, 0.15);
+          }
+          i {
+            margin-right: 5px;
+            font-size: 16px;
+          }
+        }
+      }
     }
   }
 }
