@@ -114,6 +114,7 @@ Mock.mock('/students', /post|get/i, students);
 //测试情况
 Mock.mock('/examList', /post|get/i, {
     'data|6': [{
+        'id': Random.id(),
         "name|+1": ['数学测试', '化学测试', '数学测试', '物理测试', '物理测试', '数学测试'],
         'correctCount|50-90': 50,
         'ranking|1-8': 4,

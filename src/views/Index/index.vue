@@ -11,7 +11,7 @@
               <span>整个学期</span>
             </div>
           </div>
-          <div style="margin-top:20px;min-height:300px">
+          <div style="margin-top:40px;min-height:300px">
             <lineChart v-if="testStage" :testStage="testStage" />
           </div>
         </div>
@@ -109,13 +109,6 @@ export default {
   },
 
   async created() {
-    // this.$http.get("/news", "type=top&key=123456").then(res => {
-    //   console.log(res.data);
-    //   // this.newsListShow = res.data.data;
-    // });
-    // this.$http.get("/stats").then(res => {
-    //   console.log(res.data);
-    // });
     this.getData();
   },
 
