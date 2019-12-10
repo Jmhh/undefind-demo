@@ -1,22 +1,19 @@
 <template>
   <div class="loginForm">
-    <el-form
-      :model="loginForm"
-      status-icon
-      ref="loginForm"
-      label-width="100px"
-      class="demo-ruleForm"
-    >
-      <el-form-item label="用户" prop="user">
-        <el-input type="text" v-model="loginForm.user" auto-complete="off"></el-input>
-      </el-form-item>
-      <el-form-item label="确认密码" prop="checkPass">
-        <el-input type="password" v-model="loginForm.pass" auto-complete="off"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="submitForm('loginForm')" size="mini">提交</el-button>
-      </el-form-item>
-    </el-form>
+    <div class="form">
+      <h3>系统登录</h3>
+      <el-form :model="loginForm" status-icon ref="loginForm" label-width="0" class="demo-ruleForm">
+        <el-form-item prop="user">
+          <el-input type="text" v-model="loginForm.user" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item label prop="checkPass">
+          <el-input type="password" v-model="loginForm.pass" auto-complete="off"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submitForm('loginForm')" size="mini">登录</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
   </div>
 </template>
 
@@ -49,6 +46,12 @@ export default {
                 this.userData = res.data;
                 this.$store.dispatch("setUserName", res.data.name);
                 this.$store.dispatch("setUserToken", res.data.jwtToken);
+                setTimeout(() => {
+                  this.$message({
+                    message: `登录成功,当前用户 ${res.data.name}`,
+                    type: "success"
+                  });
+                }, 500);
               }
             })
             .then(() => {
@@ -75,5 +78,10 @@ export default {
   justify-content: center;
   height: -webkit-fill-available;
   background-color: #eaf0f7;
+  .form {
+    padding: 20px;
+    background: #fff;
+    border-radius: 3px;
+  }
 }
 </style>

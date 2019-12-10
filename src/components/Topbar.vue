@@ -38,22 +38,6 @@
                   登出
                 </el-dropdown-item>
               </el-dropdown-menu>
-              <!-- <div class="userLisst">
-              <ul>
-                <li>
-                  <i class="iconfont icongerenzhongxin"></i> 个人中心
-                </li>
-                <li>
-                  <i class="iconfont iconxinxizhongxin"></i> 我的信息
-                </li>
-                <li>
-                  <i class="iconfont iconsettings"></i> 个人设置
-                </li>
-                <li @click="handleLoginOut">
-                  <i class="iconfont icondengchu"></i> 登出
-                </li>
-              </ul>
-              </div>-->
             </el-dropdown>
           </div>
         </div>
@@ -93,6 +77,12 @@ export default {
       this.$router.replace({
         path: "/login"
       });
+      setTimeout(() => {
+        this.$message({
+          message: `退出登录成功`,
+          type: "warning"
+        });
+      }, 500);
     }
   }
 };

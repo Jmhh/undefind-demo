@@ -6,7 +6,7 @@
 
 ### 项目演示
 
-项目在线演示地址：[https://jmhh.github.io/analytics/dist/index.html#/index](https://jmhh.github.io/analytics/dist/index.html#/index)
+项目在线演示地址：[https://jmhh.github.io/analytics/dist/index.html#/login](https://jmhh.github.io/analytics/dist/index.html#/login)
 ![image](https://github.com/Jmhh/analytics/blob/master/public/images/index.png)
 
 ### 主要功能
