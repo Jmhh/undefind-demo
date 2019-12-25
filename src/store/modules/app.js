@@ -6,6 +6,9 @@ const state = {
 }
 
 const mutations = {
+    SET_SIDEBAR: state => {
+        state.isCollapse = true
+    },
     TOGGLE_SIDEBAR: state => {
         if (state.isCollapse) {
             state.isCollapse = false
@@ -32,6 +35,11 @@ const mutations = {
 }
 
 const actions = {
+    setSideBar({
+        commit
+    }) {
+        commit('SET_SIDEBAR')
+    },
     toggleSideBar({
         commit
     }) {

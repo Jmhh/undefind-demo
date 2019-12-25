@@ -115,17 +115,32 @@ export default {
   methods: {
     async getData() {
       try {
-        const statsData = await this.$http.get("/stats"); //获取状态信息
-        const studentLists = await this.$http.get("/studentLists"); //获取学生测试列表
-        const testStage = await this.$http.get("/testStage"); //获取学生测试列表
-        const testPeriodAvgs = await this.$http.get("/testPeriodAvgs"); //获取最新一次测试情况数据
-        const ratios = await this.$http.get("/ratios"); //获取最新一次测试情况数据
-        this.statsData = statsData.data;
-        this.studentListData = studentLists.data;
-        this.testStage = testStage.data.data;
-        this.testPeriodAvgs = testPeriodAvgs.data;
-        this.ratios = ratios.data.data;
-        //console.log(ratios.data);
+        const [
+          statsData,
+          studentLists,
+          testStage,
+          testPeriodAvgs,
+          ratios
+        ] = await Promise.all([
+          this.$http.get("/stats"),
+          this.$http.get("/studentLists"),
+          this.$http.get("/testStage"),
+          this.$http.get("/testPeriodAvgs"),
+          this.$http.get("/ratios")
+        ]);
+        [
+          this.statsData,
+          this.studentLists,
+          this.testStage,
+          this.testPeriodAvgs,
+          this.ratios
+        ] = [
+          statsData.data,
+          studentLists.data,
+          testStage.data.data,
+          testPeriodAvgs.data,
+          ratios.data.data
+        ];
       } catch (error) {
         console.log(error);
       }

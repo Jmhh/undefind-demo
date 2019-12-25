@@ -122,6 +122,109 @@ Mock.mock('/examList', /post|get/i, {
     }]
 });
 
+//测试情况
+Mock.mock('/tableList', /post|get/i, {
+    'result|6': [{
+        'id': Random.id(),
+        'send_status|1-3': 1,
+        'work_date|10-90': 50,
+        'begin_date|1': ['2019-12-27', '2019-12-07', '2019-11-27', '2019-10-27', '2019-12-24', '2019-12-13'],
+        'end_date|1': ['2019-12-27', '2019-12-07', '2019-11-27', '2019-10-27', '2019-12-24', '2019-12-13'],
+        'work_id|1-4': 1,
+        'is_point|1-2': 1,
+        'work_status|1-2': 1,
+    }],
+    'titles': [ //type-1字符串 2-下拉选择 3-日期选择
+        {
+            'name': '报送状态',
+            'value': 'send_status',
+            'type': 2,
+            'typeValue': [{
+                    'name': '已暂存',
+                    'value': 1
+                },
+                {
+                    'name': '已回退',
+                    'value': 2
+                },
+                {
+                    'name': '已提交',
+                    'value': 3
+                },
+            ]
+        },
+        {
+            'name': '工时',
+            'value': 'work_date',
+            'type': 1,
+            'typeValue': null
+        },
+        {
+            'name': '开始日期',
+            'value': 'begin_date',
+            'type': 3,
+            'typeValue': null
+        },
+        {
+            'name': '完成日期',
+            'value': 'end_date',
+            'type': 3,
+            'typeValue': null
+        },
+        {
+            'name': '项目',
+            'value': 'work_id',
+            'type': 2,
+            'typeValue': [{
+                    'name': '大桥工程',
+                    'value': 1
+                },
+                {
+                    'name': '民生工程',
+                    'value': 2
+                },
+                {
+                    'name': '教育工程',
+                    'value': 3
+                },
+                {
+                    'name': '城市建设工程',
+                    'value': 4
+                },
+            ]
+        },
+        {
+            'name': '是否重点',
+            'value': 'is_point',
+            'type': 2,
+            'typeValue': [{
+                    'name': '是',
+                    'value': 1
+                },
+                {
+                    'name': '否',
+                    'value': 2
+                },
+            ]
+        },
+        {
+            'name': '完成状态',
+            'value': 'work_status',
+            'type': 2,
+            'typeValue': [{
+                    'name': '已完成',
+                    'value': 1
+                },
+                {
+                    'name': '未完成',
+                    'value': 2
+                },
+            ]
+        },
+
+    ],
+});
+
 // Mock.mock('/students', /post|get/i, {
 //     'data|12': [{
 //         "id": Random.id(),
