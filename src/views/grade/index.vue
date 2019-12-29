@@ -10,8 +10,8 @@ export default {
   name: "",
   data() {
     return {
-      timeStatus: "edit", //preview edit
-      status: "this" //this next
+      timeStatus: "preview", //preview edit
+      status: "next" //this next
     };
   },
 

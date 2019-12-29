@@ -21,6 +21,7 @@ export const constantRoutes = [{
             title: '首页'
         },
         redirect: '/index',
+        icon: 'icondaohang-shouye-copy',
         children: [{
             path: 'index',
             name: 'index',
@@ -40,14 +41,6 @@ export const constantRoutes = [{
             title: '登录页'
         },
         component: () => import('../views/login/index.vue')
-    },
-    {
-        path: '/',
-        meta: {
-            title: '首页'
-        },
-        hidden: true,
-        redirect: '/index'
     }
 ]
 
@@ -90,7 +83,7 @@ export const asyncRoutes = [{
         id: 3,
         icon: 'iconceshi4',
         component: Layout,
-        redirect: '/exam/exam__index',
+        redirect: '/exam/exam_index',
         children: [{
             path: 'exam_index',
             name: 'exam_index',
@@ -120,6 +113,27 @@ export const asyncRoutes = [{
             },
             id: 41,
             component: () => import('../views/class/index.vue')
+        }]
+
+    },
+    {
+        path: '/grade',
+        name: 'grade',
+        meta: {
+            title: '年级'
+        },
+        id: 5,
+        icon: 'iconceshi4',
+        component: Layout,
+        redirect: '/grade/grade_index',
+        children: [{
+            path: 'grade_index',
+            name: 'grade_index',
+            meta: {
+                title: '年级首页'
+            },
+            id: 51,
+            component: () => import('../views/grade/index.vue')
         }]
 
     }
