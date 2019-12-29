@@ -47,7 +47,6 @@ export default {
         let that = this;
         setTimeout(function() {
           // 打印screenWidth变化的值
-
           if (that.screenWidth < 1120) {
             console.log(that.screenWidth);
             that.$store.dispatch("setSideBar");

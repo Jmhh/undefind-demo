@@ -43,6 +43,7 @@ export default {
             .get("/login")
             .then(res => {
               if (res) {
+                console.log(res);
                 this.userData = res.data;
                 this.$store.dispatch("setUserName", res.data.name);
                 this.$store.dispatch("setUserToken", res.data.jwtToken);

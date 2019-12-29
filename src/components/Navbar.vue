@@ -10,13 +10,13 @@
           :collapse="isCollapse"
         >
           <el-menu-item
-            v-for="item in routeData"
+            v-for="item in routes"
             :key="item.name"
-            :index="item.id"
+            :index="item.name"
             @click="handleGo(item.name)"
           >
-            <i :class="item.icon"></i>
-            <span>{{item.text}}</span>
+            <i :class="'iconfont '+item.icon"></i>
+            <span>{{item.meta.title}}</span>
           </el-menu-item>
         </el-menu>
       </el-col>
@@ -25,6 +25,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "",
   props: [""],
@@ -56,9 +57,7 @@ export default {
   },
 
   computed: {
-    isCollapse() {
-      return this.$store.getters.isCollapse;
-    }
+    ...mapGetters(["routes", "isCollapse"])
   },
 
   components: {},

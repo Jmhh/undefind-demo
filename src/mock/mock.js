@@ -90,7 +90,72 @@ Mock.mock('/ratios', /post|get/i, {
 Mock.mock('/login', /post|get/i, {
     'name': 'admin',
     'password': 123456,
+    'roleId': 1,
     'jwtToken': Random.id(),
+});
+
+//路由接口
+Mock.mock('/roles', /post|get/i, {
+    'ids': [1, 2, 3, 4, 21, 22, 31, 41],
+    'roles': [{
+            'name': 'index',
+            'meta': {
+                'title': '首页',
+            },
+            'id': 1
+        },
+        {
+            'name': 'analysis',
+            'meta': {
+                'title': '分析',
+            },
+            'id': 2,
+            'children': [{
+                    'name': 'analysis-main',
+                    'meta': {
+                        'title': '分析首页',
+                    },
+                    'id': 21
+                },
+                {
+                    'name': 'analysis-class',
+                    'meta': {
+                        'title': '分析班级',
+                    },
+                    'id': 22
+                }
+            ]
+        },
+        {
+            'name': 'exam',
+            'meta': {
+                'title': '测试',
+            },
+            'id': 3,
+            'children': [{
+                'name': 'exam_index',
+                'title': '测试首页',
+                'meta': {
+                    'title': '分析',
+                },
+                'id': 31
+            }]
+        },
+        {
+            'name': 'class',
+            'meta': {
+                'title': '班级',
+            },
+            'id': 4,
+            'children': [{
+                'name': 'class_index',
+                'meta': {
+                    'title': '班级首页',
+                },
+                'id': 41
+            }]
+        },
+    ]
 });
 
 //班级情况
