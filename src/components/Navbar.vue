@@ -10,10 +10,10 @@
           :collapse="isCollapse"
         >
           <el-menu-item
-            v-for="item in routes"
+            v-for="item in addRoutes"
             :key="item.name"
             :index="item.name"
-            @click="handleGo(item.name)"
+            @click="handleGo(item.path)"
           >
             <i :class="'iconfont '+item.icon"></i>
             <span>{{item.meta.title}}</span>
@@ -31,33 +31,12 @@ export default {
   props: [""],
   data() {
     return {
-      active: "",
-      routeData: [
-        {
-          name: "index",
-          text: "首页",
-          id: "1",
-          icon: "iconfont icondaohang-shouye-copy"
-        },
-        {
-          name: "analysis",
-          text: "学情分析",
-          id: "2",
-          icon: "iconfont iconfenxi1"
-        },
-        { name: "exam", text: "测试", id: "3", icon: "iconfont iconceshi4" },
-        {
-          name: "class",
-          text: "班级",
-          id: "4",
-          icon: "iconfont iconbeikejiaoan"
-        }
-      ]
+      active: ""
     };
   },
 
   computed: {
-    ...mapGetters(["routes", "isCollapse"])
+    ...mapGetters(["addRoutes", "isCollapse"])
   },
 
   components: {},
@@ -73,7 +52,7 @@ export default {
   },
   methods: {
     handleGo(data) {
-      this.$router.push({ path: `/${data}` });
+      this.$router.push({ path: `${data}` });
     },
     fliterActive(data) {
       const map = {

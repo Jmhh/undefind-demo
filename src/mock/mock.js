@@ -97,7 +97,7 @@ Mock.mock('/login', /post|get/i, {
 
 //路由接口
 Mock.mock('/roles', /post|get/i, {
-    'ids': [1, 2, 3, 4, 5, 21, 22, 31, 41, 51],
+    'ids': [1, 11, 2, 3, 4, 5, 21, 22, 31, 41, 51, 211, 212, 221, 222],
     'roles': [{
             'name': 'index',
             'meta': {
@@ -106,24 +106,54 @@ Mock.mock('/roles', /post|get/i, {
             'id': 1
         },
         {
-            'name': 'analysis',
+            'name': 'planRecord',
             'meta': {
-                'title': '分析',
+                'title': '周计划填报',
             },
             'id': 2,
             'children': [{
-                    'name': 'analysis-main',
+                    'name': 'thisWeek',
                     'meta': {
-                        'title': '分析首页',
+                        'title': '本周计划',
                     },
-                    'id': 21
+                    'id': 21,
+                    'children': [{
+                            'name': 'planEdit',
+                            'meta': {
+                                'title': '周计划编辑',
+                            },
+                            'id': 211,
+                        },
+                        {
+                            'name': 'planPreview',
+                            'meta': {
+                                'title': '历史计划查看',
+                            },
+                            'id': 212,
+                        }
+                    ]
                 },
                 {
-                    'name': 'analysis-class',
+                    'name': 'nextWeek',
                     'meta': {
-                        'title': '分析班级',
+                        'title': '下周计划',
                     },
-                    'id': 22
+                    'id': 22,
+                    'children': [{
+                            'name': 'planEdit',
+                            'meta': {
+                                'title': '周计划编辑',
+                            },
+                            'id': 221,
+                        },
+                        {
+                            'name': 'preview',
+                            'meta': {
+                                'title': '历史计划查看',
+                            },
+                            'id': 222,
+                        }
+                    ]
                 }
             ]
         },

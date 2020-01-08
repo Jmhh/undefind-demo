@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="classTabl">
-      <p>{{status}} -- {{timeStatus}}</p>
       <div class="control" v-if="timeStatus === 'edit'">
         <el-button
           :type="editStatus?'danger':'info'"

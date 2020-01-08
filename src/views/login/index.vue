@@ -41,15 +41,14 @@ export default {
         if (valid) {
           this.$http
             .get("/login")
-            .then(res => {
-              if (res) {
-                console.log(res);
-                this.userData = res.data;
-                this.$store.dispatch("setUserName", res.data.name);
-                this.$store.dispatch("setUserToken", res.data.jwtToken);
+            .then(({ data }) => {
+              if (data) {
+                this.userData = data;
+                this.$store.dispatch("setUserName", data.name);
+                this.$store.dispatch("setUserToken", data.jwtToken);
                 setTimeout(() => {
                   this.$message({
-                    message: `登录成功,当前用户 ${res.data.name}`,
+                    message: `登录成功,当前用户 ${data.name}`,
                     type: "success"
                   });
                 }, 500);

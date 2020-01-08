@@ -6,6 +6,7 @@
           <i class="iconfont icondaohang"></i>
         </span>
       </div>
+
       <div class="topbar-righ">
         <div class="badge">
           <el-badge is-dot class="item">
@@ -51,7 +52,9 @@ export default {
   name: "",
   props: [""],
   data() {
-    return {};
+    return {
+      routeItems: []
+    };
   },
 
   components: {},
@@ -66,7 +69,7 @@ export default {
   },
 
   created() {},
-
+  watch: {},
   methods: {
     handleCollapse() {
       this.$store.dispatch("toggleSideBar");

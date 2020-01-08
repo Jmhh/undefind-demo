@@ -5,7 +5,19 @@
     </div>
     <div class="content-right">
       <Topbar />
+      <div>
+        <div class="top-breadcrumb">
+          <div class="router-control">
+            <div v-for="item in routeItems" :key="item.name" class="router-item">
+              <span @click="handleFatherRoute(item)">{{item.meta.title}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
       <div v-loading="loading">
+        <div v-if="routeLength > 2">
+          <h3>3级路由</h3>
+        </div>
         <transition name="fade-transform" mode="out-in">
           <keep-alive>
             <router-view :key="key" />
@@ -38,6 +50,15 @@ export default {
     };
   },
   watch: {
+    $route: {
+      handler(route) {
+        let curName = route.matched[0].name;
+        const routes = [...this.addRoutes.filter(e => e.name === curName)];
+        this.routeItems = routes[0].children;
+        console.log(this.routeItems);
+      },
+      immediate: true
+    },
     screenWidth(val) {
       // 为了避免频繁触发resize函数导致页面卡顿，使用定时器
       if (!this.timer) {
@@ -66,6 +87,18 @@ export default {
     },
     loading() {
       return this.$store.getters.loading;
+    },
+    addRoutes() {
+      return this.$store.getters.addRoutes;
+    },
+    routeLength() {
+      return this.$route.matched.length;
+    }
+  },
+  methods: {
+    handleFatherRoute(item) {
+      //console.log(item.redirect);
+      this.$router.push({ path: `${item.redirect}` });
     }
   }
 };
@@ -80,8 +113,25 @@ export default {
   }
   .content-right {
     flex: 1;
-    padding: 90px 20px 20px 20px;
+    padding: 60px 20px 20px 20px;
     background: #eaf0f7;
+  }
+  .top-breadcrumb {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  .router-control {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    .router-item {
+      span {
+        display: inline-block;
+        line-height: 35px;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+    }
   }
 }
 </style>
