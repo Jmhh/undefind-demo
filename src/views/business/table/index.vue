@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<router-view />
+		<h3>表格组件</h3>
 	</div>
 </template>
 

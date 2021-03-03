@@ -1,20 +1,15 @@
-import Vue from "vue";
-import App from "./App.vue";
-import router from "./router";
-import store from "./store";
-import Element from "element-ui";
-import 'element-ui/lib/theme-chalk/index.css'
-import '@/assets/style/reset.scss'
-import '@/assets/style/element-ui.scss'
-import './mock/mock'
-import http from './utils/request'
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import 'element-ui/lib/theme-chalk/index.css' //elementUI样式
+import '@/assets/style/index.scss' // 全局css
+import './plugins/element.js' //elementUI组件按需引入
 
-Vue.use(Element);
-Vue.config.productionTip = false;
-Vue.prototype.$http = http
+Vue.config.productionTip = false
 
 new Vue({
-    router,
-    store,
-    render: h => h(App)
-}).$mount("#app");
+	router,
+	store,
+	render: h => h(App)
+}).$mount('#app')
