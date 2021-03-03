@@ -2,7 +2,7 @@
 
 ### 项目介绍
 
-vue-admin 前端项目，基于 Vue+Element+Mockjs 实现。
+Vue+Element+Mockjs 实现的前端中后台管理系统模板~~~
 
 ### Build Setup
 
